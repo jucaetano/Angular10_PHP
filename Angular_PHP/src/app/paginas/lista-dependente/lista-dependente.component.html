@@ -1,0 +1,57 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <app-error-msg></app-error-msg>
+      <div class="text-left">
+        <button type="button" class="btn btn-success" routerLink="/pessoa/criar">Cadastrar Pessoa</button>
+      </div>
+      <br>
+      <div class="text-center" *ngIf="!existemPessoas()">
+        Nenhuma pessoa cadastrada.
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Data Nascimento</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <tr *ngFor="let dependente of dependentes">
+        <td> {{dependente.nome}}</td>
+        <td> {{dependente.email}}</td>
+        <td> {{dependente.dtnascimento}}</td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/dependente/editar/{{dependente.id}}">Editar</button>
+          <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletaDependente(dependente.id)">Excluir</button>
+       </td>
+      </tr>
+    </tbody>
+
+  </table>
+    <!--<div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-pill"
+            [class.badge-danger]="pessoa.prioridade == 'ALTA' "
+            [class.badge-warning]="pessoa.prioridade == 'MEDIA' "
+            [class.badge-success]="pessoa.prioridade == 'BAIXA' ">
+            PRIORIDADE {{pessoa.prioridade}}
+          </span>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{pessoa.conteudo}}</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-right">
+             </div>
+        </div>
+      </div>
+    </div>-->
+</div>
+

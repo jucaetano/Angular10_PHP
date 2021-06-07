@@ -1,0 +1,47 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text"
+      class="form-control"
+      id="nome"
+      placeholder="Insira o nome da pessoa" name="nome"
+      #nome="ngModel"
+      [(ngModel)]="pessoa.nome"
+      [class.is-invalid]="!nome.valid && nome.touched"
+      required>
+    <div *ngIf="!nome.valid && nome.touched" class="text-danger">
+     Insira o nome da pessoa.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email"
+      class="form-control"
+      id="email"
+      placeholder="Insira o email da pessoa" name="email"
+      #email="ngModel"
+      [(ngModel)]="pessoa.email"
+      [class.is-invalid]="!email.valid && email.touched"
+      required>
+    <div *ngIf="!email.valid && email.touched" class="text-danger">
+     Insira o email da pessoa.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dtnascimento">Data de nascimento</label>
+    <input type="text"
+    mask="00/00/0000"
+      class="form-control"
+      id="dtnascimento"
+      placeholder="Insira a data de nascimento" name="dtnascimento"
+      #dtnascimento="ngModel"
+      [(ngModel)]="pessoa.dtnascimento"
+      [class.is-invalid]="!dtnascimento.valid && dtnascimento.touched"
+      required
+      >
+    <div *ngIf="!dtnascimento.valid && dtnascimento.touched" class="text-danger">
+     Insira a data de nascimento.
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Salvar</button>
+</form>
